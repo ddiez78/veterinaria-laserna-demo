@@ -4,260 +4,143 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Centro Veterinario La Serna — Clínica Veterinaria en Leganés</title>
-<meta name="description" content="Clínica veterinaria de confianza en Leganés. Consultas, vacunación, cirugía, urgencias y peluquería canina.">
+<meta name="description" content="Demo orientativa para Centro Veterinario La Serna, clínica veterinaria en Leganés.">
 <link rel="stylesheet" href="motion.css">
 <style>
 :root {
-  --mk-primario: #2f80ed;
-  --mk-secundario: #5aa469;
-  --mk-fondo: #f4f8fb;
-  --mk-texto: #15293b;
-  --mk-azul-oscuro: #12324a;
+  --mk-primario:#2f80ed;
+  --mk-secundario:#5aa469;
+  --mk-fondo:#eef6fb;
+  --mk-texto:#13283a;
+  --azul:#11324a;
+  --azul-2:#1f5f8f;
+  --verde:#5aa469;
+  --blanco:#fff;
 }
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--mk-fondo);color:var(--mk-texto);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;overflow-x:hidden}
+header{position:fixed;top:0;left:0;right:0;z-index:9990;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(255,255,255,.95);border-bottom:1px solid rgba(47,128,237,.16);box-shadow:0 10px 30px rgba(17,50,74,.08);backdrop-filter:blur(10px)}
+header .logo{font-weight:850;font-size:clamp(15px,2vw,20px);letter-spacing:-.02em;color:var(--azul)}
+header .tel{background:var(--mk-primario);color:#fff;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:800;box-shadow:0 10px 24px rgba(47,128,237,.24)}
 
-body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; color: var(--mk-texto); background: var(--mk-fondo); }
+/* Mantener el túnel del kit, pero controlar capas para que no se pisen visualmente */
+.mk-film{background:#eef6fb}
+.mk-tunnel{background:#eef6fb;perspective-origin:50% 46%}
+.mk-zshot{padding:88px 24px 52px;text-align:center;color:var(--mk-texto);isolation:isolate;z-index:calc(100 - var(--zi));}
+.mk-zshot>*{position:relative;z-index:2}
 
-header { position: fixed; top: 0; left: 0; right: 0; z-index: 9990; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.98); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(47,128,237,0.18); box-shadow: 0 8px 28px rgba(21,41,59,0.08); }
-header .logo { font-weight: 800; font-size: 1.28rem; color: var(--mk-azul-oscuro); letter-spacing:-0.02em; }
-header .tel { background: var(--mk-primario); color: white; padding: 0.7rem 1.45rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: transform 0.2s ease; box-shadow:0 8px 22px rgba(47,128,237,0.22); }
-header .tel:hover { transform: scale(1.04); }
+/* Primer fotograma: opaco, simple, sin imagen ni textos que compitan */
+.hero-clean{background:linear-gradient(135deg,#eaf5fc 0%,#ffffff 52%,#e8f4ef 100%)}
+.hero-clean::before{content:"";position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(17,50,74,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(17,50,74,.045) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(circle at center,#000 34%,transparent 72%)}
+.hero-clean::after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(circle at 20% 18%,rgba(47,128,237,.18),transparent 34%),radial-gradient(circle at 82% 70%,rgba(90,164,105,.16),transparent 32%)}
+.name-box{width:min(820px,92vw);padding:clamp(34px,6vw,68px);margin:0 auto;background:rgba(17,50,74,.97);border:1px solid rgba(255,255,255,.28);border-radius:30px;box-shadow:0 34px 95px rgba(17,50,74,.30)}
+.name-box h1{margin:0;color:#fff;font-size:clamp(36px,6.5vw,76px);line-height:1.04;letter-spacing:-.052em;font-weight:920}
+.scroll-cue{margin:24px auto 0;display:inline-flex;align-items:center;justify-content:center;gap:10px;color:#d9ecff;font-size:clamp(12px,1.55vw,15px);letter-spacing:.13em;text-transform:uppercase;font-weight:850;opacity:.9}
+.scroll-cue span:first-child{width:8px;height:8px;border-radius:999px;background:var(--verde);box-shadow:0 0 0 8px rgba(90,164,105,.17)}
 
-.mk-film { background: linear-gradient(180deg, #f4f8fb 0%, #e7f0f7 50%, #f9fbfd 100%); }
-.mk-zshot { color: var(--mk-texto); text-align: center; padding: 6rem 2rem 4rem; overflow:hidden; }
-.mk-zshot::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg, rgba(244,248,251,0.2), rgba(244,248,251,0.78)); z-index:1; }
-.mk-zshot > * { position:relative; z-index:2; }
-.mk-zshot h1 { font-size: clamp(2.7rem, 7.5vw, 6.1rem); font-weight: 850; margin: 0 auto 1.4rem; letter-spacing: -0.045em; line-height: 0.98; color: var(--mk-azul-oscuro); max-width: 980px; }
-.mk-zshot h2 { font-size: clamp(2.15rem, 5.4vw, 4.75rem); font-weight: 830; margin: 0 auto 1.7rem; letter-spacing: -0.04em; line-height: 1.04; max-width: 1040px; color: var(--mk-azul-oscuro); }
-.mk-zshot h3 { font-size: clamp(1.9rem, 4.2vw, 3.8rem); font-weight: 800; margin: 0 auto 1.35rem; color: var(--mk-azul-oscuro); line-height:1.05; letter-spacing:-0.035em; max-width:850px; }
-.mk-zshot p { font-size: clamp(1.08rem, 2.1vw, 1.55rem); line-height: 1.62; max-width: 760px; margin: 0 auto 1.5rem; opacity: 0.92; }
-.mk-zshot .tagline { font-size: clamp(1.2rem, 2.4vw, 1.75rem); opacity: 0.82; font-weight: 400; }
+.photo{position:absolute;inset:0;z-index:0;overflow:hidden;background:#dfeaf2}
+.photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.98) contrast(1.02)}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(238,246,251,.94),rgba(238,246,251,.70),rgba(238,246,251,.94))}
+.photo.dark::after{background:linear-gradient(90deg,rgba(17,50,74,.92),rgba(17,50,74,.68),rgba(17,50,74,.92))}
 
-.text-panel { background: rgba(255,255,255,0.94); border:1px solid rgba(47,128,237,0.14); border-radius: 26px; box-shadow:0 24px 70px rgba(18,50,74,0.14); padding: clamp(2rem,4vw,4rem); max-width: 920px; margin:0 auto; }
-.text-panel.dark { background: rgba(18,50,74,0.88); color:#fff; border-color:rgba(255,255,255,0.2); box-shadow:0 26px 80px rgba(18,50,74,0.28); }
-.text-panel.dark h1, .text-panel.dark h2, .text-panel.dark h3, .text-panel.dark p { color:#fff; }
-.hero-panel { background: rgba(18,50,74,0.96); border: 1px solid rgba(255,255,255,0.24); border-radius: 28px; padding: clamp(2rem,5vw,4rem); max-width: 860px; margin: 0 auto; box-shadow: 0 34px 90px rgba(18,50,74,0.42); backdrop-filter: blur(10px); }
-.hero-panel h1 { color:#fff; font-size: clamp(2.15rem,5.2vw,4.3rem); line-height: 1.04; letter-spacing:-0.045em; margin:0; }
-.scroll-hint { margin: 1.35rem auto 0; display:inline-flex; align-items:center; gap:.55rem; color:#d7ebff; font-size: clamp(.82rem,1.5vw,.98rem); letter-spacing:.12em; text-transform:uppercase; font-weight:800; opacity:.82; }
-.scroll-hint .dot { width:8px; height:8px; border-radius:999px; background:#5aa469; box-shadow:0 0 0 7px rgba(90,164,105,.16); }
-.bg-photo { position:absolute; inset:0; overflow:hidden; z-index:0; }
-.bg-photo img { width:100%; height:100%; object-fit:cover; filter:saturate(0.95) contrast(0.98); }
-.bg-photo::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(244,248,251,0.92), rgba(244,248,251,0.68), rgba(244,248,251,0.9)); }
-
-.servicio-item { background: rgba(255,255,255,0.98); backdrop-filter: blur(6px); padding: clamp(2rem,4vw,3.2rem); border-radius: 24px; border: 1px solid rgba(47,128,237,0.18); max-width: 540px; margin: 0 auto; text-align: left; box-shadow: 0 26px 70px rgba(21,41,59,0.16); }
-.servicio-item .numero { font-size: clamp(4.2rem,10vw,7.2rem); font-weight: 950; line-height: 0.82; color: var(--mk-primario); opacity: 0.14; margin: 0 0 1.1rem 0; letter-spacing: -0.07em; }
-.servicio-item h4 { font-size: clamp(1.65rem,3vw,2.35rem); margin: 0 0 1rem 0; font-weight: 820; color: var(--mk-azul-oscuro); letter-spacing: -0.035em; line-height:1.08; }
-.servicio-item p { font-size: clamp(1rem,1.9vw,1.25rem); margin: 0; opacity: 0.84; line-height: 1.62; max-width: 42ch; }
-
-.contacto-block { max-width: 600px; margin: 0 auto; }
-.contacto-item { margin: 2rem 0; }
-.contacto-label { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.7; margin-bottom: 0.5rem; color: var(--mk-primario); }
-.contacto-value { font-size: 1.75rem; font-weight: 600; }
-.contacto-value a { color: var(--mk-texto); text-decoration: none; }
-
-.cta-giant { display: inline-block; padding: 1.5rem 3rem; background: var(--mk-secundario); color: white; text-decoration: none; border-radius: 60px; font-weight: 700; font-size: 1.5rem; margin-top: 2rem; transition: all 0.3s ease; box-shadow: 0 8px 30px rgba(124,179,66,0.3); }
-.cta-giant:hover { transform: scale(1.05); box-shadow: 0 12px 40px rgba(124,179,66,0.4); }
-
-footer { background: white; color: var(--mk-texto); padding: 3rem 2rem; text-align: center; border-top: 1px solid rgba(74,144,226,0.2); }
-footer p { margin: 0.5rem 0; opacity: 0.7; font-size: 0.875rem; }
-
-@media (max-width: 768px) {
-  header { padding: 0.75rem 1rem; }
-  header .logo { font-size: 1.125rem; }
-  header .tel { padding: 0.5rem 1rem; font-size: 0.875rem; }
-  .contacto-value { font-size: 1.25rem; }
-  .cta-giant { font-size: 1.125rem; padding: 1.125rem 2rem; }
-}
+.panel,.service{width:min(860px,92vw);margin:0 auto;padding:clamp(30px,5vw,60px);background:rgba(255,255,255,.98);border:1px solid rgba(47,128,237,.16);border-radius:30px;box-shadow:0 30px 90px rgba(17,50,74,.16)}
+.panel.dark{background:rgba(17,50,74,.94);border-color:rgba(255,255,255,.22);color:#fff;box-shadow:0 34px 95px rgba(17,50,74,.32)}
+.kicker{display:block;margin:0 0 16px;color:var(--mk-primario);font-size:13px;line-height:1.2;letter-spacing:.16em;text-transform:uppercase;font-weight:900}.panel.dark .kicker{color:#bfe0ff}
+h2,h3{margin:0 auto 18px;color:var(--azul);font-size:clamp(32px,5vw,58px);line-height:1.06;letter-spacing:-.045em;font-weight:880;max-width:900px}.panel.dark h2,.panel.dark h3,.panel.dark p{color:#fff}
+p{margin:0 auto;max-width:720px;color:#3e566b;font-size:clamp(17px,2.1vw,24px);line-height:1.6}.panel.dark p{color:#e8f4ff}
+.service{text-align:left;max-width:570px}.service .num{display:block;margin:0 0 22px;color:var(--mk-primario);opacity:.15;font-size:clamp(78px,12vw,132px);line-height:.78;letter-spacing:-.085em;font-weight:950}.service h3{margin:0 0 16px;font-size:clamp(28px,4.2vw,46px);max-width:none}.service p{margin:0;max-width:42ch;font-size:clamp(16px,1.9vw,21px);line-height:1.58;color:#405970}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;margin-top:30px;padding:18px 30px;border-radius:999px;background:var(--verde);color:#fff;text-decoration:none;font-size:clamp(17px,2vw,22px);font-weight:850;box-shadow:0 16px 34px rgba(90,164,105,.25)}.cta.blue{background:var(--mk-primario);box-shadow:0 16px 34px rgba(47,128,237,.25)}.cta svg{width:26px;height:26px;flex:0 0 auto}
+footer{background:#fff;color:#52677b;text-align:center;padding:44px 24px;border-top:1px solid rgba(47,128,237,.15)}footer p{font-size:14px;line-height:1.5;margin:6px auto;color:#52677b}
+@media(max-width:760px){header{padding:12px 16px}.mk-zshot{padding:86px 18px 50px}.name-box{border-radius:24px}.name-box h1{font-size:clamp(34px,10vw,58px)}.scroll-cue{max-width:260px}.panel,.service{border-radius:24px}}
 </style>
 </head>
 <body>
-
 <header>
   <div class="logo">Centro Veterinario La Serna</div>
-  <a href="https://wa.me/34678612969?text=Hola%2C%20necesito%20información%20sobre%20Centro%20Veterinario%20La%20Serna" class="tel">Contactar</a>
+  <a class="tel" href="https://wa.me/34678612969?text=Hola%2C%20necesito%20información%20sobre%20Centro%20Veterinario%20La%20Serna" target="_blank">Contactar</a>
 </header>
 
 <div class="mk-film" data-mk-scrolly data-mk-shots="14" style="--mk-nshots:14">
   <div class="mk-film-stage mk-tunnel">
-    
-    <!-- 0: Hero principal -->
-    <div class="mk-zshot" style="--zi:0">
-      <div class="mk-zdepth mk-zfog bg-photo" style="--z:-240px;">
-        <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1800&q=85" alt="">
-      </div>
-      <div class="mk-zdepth hero-panel" style="--z:130px;">
+
+    <div class="mk-zshot hero-clean" style="--zi:0">
+      <div class="name-box">
         <h1>Centro Veterinario<br>La Serna</h1>
-        <div class="scroll-hint"><span class="dot"></span><span>Desliza para ver la propuesta</span></div>
+        <div class="scroll-cue"><span></span><span>Desliza para ver la propuesta</span></div>
       </div>
     </div>
-    
-    <!-- 1: Transición visual sin texto para evitar solapamiento inicial -->
+
     <div class="mk-zshot" style="--zi:1">
-      <div class="mk-zdepth mk-zfog bg-photo" style="--z:-260px;">
-        <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=1800&q=85" alt="">
-      </div>
-      <div class="mk-zdepth text-panel" style="--z:120px; max-width:720px;">
-        <p style="font-size:clamp(1.25rem,2.7vw,2rem);font-weight:500;line-height:1.45;margin:0;">
-          Cuidado veterinario claro, cercano y fácil de contactar.
-        </p>
+      <div class="mk-zdepth mk-zfog photo" style="--z:-220px"><img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=1800&q=85" alt=""></div>
+      <div class="mk-zdepth panel" style="--z:120px">
+        <span class="kicker">Una web más clara</span>
+        <h2>Cuidado veterinario explicado sin ruido</h2>
+        <p>Una página que transmite confianza, ordena los servicios y facilita pedir cita desde el móvil.</p>
       </div>
     </div>
-    
-    <!-- 2: Statement con imagen -->
+
     <div class="mk-zshot" style="--zi:2">
-      <div class="mk-zdepth mk-zfog bg-photo" style="--z:-220px;">
-        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=1600&q=80" alt="">
-      </div>
-      <div class="mk-zdepth text-panel" style="--z:120px;">
-        <p style="font-size:clamp(1.45rem,3.5vw,2.35rem);font-weight:450;max-width:760px;">
-          Profesionales con vocación.<br>
-          Tu mascota merece el mejor cuidado.
-        </p>
+      <div class="mk-zdepth mk-zfog photo dark" style="--z:-230px"><img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=1800&q=85" alt=""></div>
+      <div class="mk-zdepth panel dark" style="--z:125px">
+        <span class="kicker">Primer impacto</span>
+        <h2>Primero confianza. Después contacto.</h2>
+        <p>El visitante debe sentir que su mascota estará en buenas manos antes de buscar el teléfono.</p>
       </div>
     </div>
-    
-    <!-- 3-7: Servicios -->
+
     <div class="mk-zshot" style="--zi:3">
-      <div class="mk-zdepth mk-zfog bg-photo" style="--z:-180px;">
-        <img src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=1600&q=80" alt="">
-      </div>
-      <div class="mk-zdepth" style="--z:100px; position:relative; z-index:10;">
-        <div class="servicio-item">
-          <div class="numero">01</div>
-          <h4>Consultas Veterinarias</h4>
-          <p>Revisiones completas, diagnóstico y tratamiento para tu mascota.</p>
-        </div>
-      </div>
+      <div class="mk-zdepth mk-zfog photo" style="--z:-210px"><img src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=1800&q=85" alt=""></div>
+      <div class="mk-zdepth service" style="--z:120px"><span class="num">01</span><h3>Consultas veterinarias</h3><p>Un bloque claro para presentar revisiones, diagnóstico y seguimiento de cada caso.</p></div>
     </div>
-    
+
     <div class="mk-zshot" style="--zi:4">
-      <div class="mk-zdepth" style="--z:90px">
-        <div class="servicio-item">
-          <div class="numero">02</div>
-          <h4>Vacunación y Desparasitación</h4>
-          <p>Protege a tu mascota con las vacunas necesarias y calendario personalizado.</p>
-        </div>
-      </div>
+      <div class="mk-zdepth service" style="--z:120px"><span class="num">02</span><h3>Vacunación y prevención</h3><p>Información útil para familias que quieren proteger a sus mascotas durante todo el año.</p></div>
     </div>
-    
+
     <div class="mk-zshot" style="--zi:5">
-      <div class="mk-zdepth mk-zfog bg-photo" style="--z:-180px;">
-        <img src="https://images.unsplash.com/photo-1615751072497-5f5169febe17?w=1600&q=80" alt="">
-      </div>
-      <div class="mk-zdepth" style="--z:100px; position:relative; z-index:10;">
-        <div class="servicio-item">
-          <div class="numero">03</div>
-          <h4>Cirugía</h4>
-          <p>Quirófano equipado para intervenciones con el máximo cuidado.</p>
-        </div>
-      </div>
+      <div class="mk-zdepth mk-zfog photo" style="--z:-210px"><img src="https://images.unsplash.com/photo-1615751072497-5f5169febe17?w=1800&q=85" alt=""></div>
+      <div class="mk-zdepth service" style="--z:120px"><span class="num">03</span><h3>Cirugía y tratamientos</h3><p>Espacio para explicar atención profesional, equipamiento y cuidados posteriores.</p></div>
     </div>
-    
+
     <div class="mk-zshot" style="--zi:6">
-      <div class="mk-zdepth" style="--z:90px">
-        <div class="servicio-item">
-          <div class="numero">04</div>
-          <h4>Urgencias</h4>
-          <p>Atención inmediata cuando tu mascota más lo necesita.</p>
-        </div>
-      </div>
+      <div class="mk-zdepth service" style="--z:120px"><span class="num">04</span><h3>Urgencias y seguimiento</h3><p>Mensajes directos para que el cliente sepa qué hacer cuando necesita ayuda rápida.</p></div>
     </div>
-    
+
     <div class="mk-zshot" style="--zi:7">
-      <div class="mk-zdepth" style="--z:90px">
-        <div class="servicio-item">
-          <div class="numero">05</div>
-          <h4>Peluquería Canina</h4>
-          <p>Baño, corte y cuidado estético para que tu perro luzca perfecto.</p>
-        </div>
-      </div>
+      <div class="mk-zdepth service" style="--z:120px"><span class="num">05</span><h3>Servicios complementarios</h3><p>Secciones preparadas para peluquería, nutrición, pruebas o cualquier servicio confirmado.</p></div>
     </div>
-    
-    <!-- 8: Promesa -->
+
     <div class="mk-zshot" style="--zi:8">
-      <div class="mk-zdepth mk-zfog bg-photo" style="--z:-210px;">
-        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1600&q=80" alt="">
-      </div>
-      <div class="mk-zdepth text-panel" style="--z:120px;">
-        <h3>Experiencia y<br>vocación</h3>
-        <p style="max-width:700px;">
-          Cuidado profesional, trato cercano y comunicación clara desde la primera visita.
-        </p>
-      </div>
+      <div class="mk-zdepth mk-zfog photo" style="--z:-220px"><img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1800&q=85" alt=""></div>
+      <div class="mk-zdepth panel" style="--z:125px"><span class="kicker">Menos ruido, más acción</span><h2>Todo pensado para pedir cita</h2><p>La navegación guía desde la confianza inicial hasta un contacto visible y directo.</p></div>
     </div>
-    
-    <!-- 9: Statement -->
-    <div class="mk-zshot" style="--zi:9">
-      <div class="text-panel">
-        <p style="font-size:clamp(1.35rem,3vw,2.1rem);font-weight:450;">
-          Desde la primera consulta hasta el seguimiento,<br>
-          estarás informado de cada paso.
-        </p>
-      </div>
-    </div>
-    
-    <!-- 10: Ubicación -->
-    <div class="mk-zshot" style="--zi:10">
-      <div class="text-panel">
-        <h3>Leganés, Madrid</h3>
-        <p>Tu clínica veterinaria de confianza</p>
-        <p style="font-size:1.125rem;opacity:0.75;">Cerca de ti cuando más lo necesitas</p>
-      </div>
-    </div>
-    
-    <!-- 11: Disponibilidad -->
-    <div class="mk-zshot" style="--zi:11">
-      <div class="contacto-block text-panel">
-        <div class="contacto-item">
-          <div class="contacto-label">Visítanos</div>
-          <div class="contacto-value" style="font-size:1.5rem;">
-            Consulta horarios y disponibilidad
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- 12: CTA WhatsApp -->
+
+    <div class="mk-zshot" style="--zi:9"><div class="mk-zdepth panel" style="--z:120px"><h2>Leganés, Madrid</h2><p>Una presencia local clara para personas que buscan una clínica veterinaria cerca.</p></div></div>
+
+    <div class="mk-zshot" style="--zi:10"><div class="mk-zdepth panel dark" style="--z:120px"><span class="kicker">Desde móvil</span><h2>Servicios, ubicación y contacto en segundos</h2><p>Sin hacer buscar al usuario. Sin menús confusos. Sin perder oportunidades.</p></div></div>
+
+    <div class="mk-zshot" style="--zi:11"><div class="mk-zdepth panel" style="--z:120px"><span class="kicker">Siguiente paso</span><h2>Responder rápido marca la diferencia</h2><p>Botones preparados para convertir visitas en conversaciones reales.</p></div></div>
+
     <div class="mk-zshot" style="--zi:12">
-      <div class="text-panel">
-      <h3>¿Necesitas una cita?</h3>
-      <a href="https://wa.me/34678612969?text=Hola%2C%20necesito%20información%20sobre%20Centro%20Veterinario%20La%20Serna" class="cta-giant mk-pulse" target="_blank" style="display:inline-flex;align-items:center;gap:0.75rem;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-        </svg>
-        Contactar por WhatsApp
-      </a>
-      <p style="margin-top:1.5rem;font-size:1.125rem;opacity:0.75;">
-        Te responderemos lo antes posible
-      </p>
+      <div class="mk-zdepth panel" style="--z:120px">
+        <h2>¿Necesitas una cita?</h2>
+        <a class="cta mk-pulse" href="https://wa.me/34678612969?text=Hola%2C%20necesito%20información%20sobre%20Centro%20Veterinario%20La%20Serna" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Contactar por WhatsApp</a>
       </div>
     </div>
-    
-    <!-- 13: CTA Maps -->
+
     <div class="mk-zshot" style="--zi:13">
-      <div class="text-panel">
-      <h3>Visítanos</h3>
-      <a href="https://www.google.com/maps/search/?api=1&query=40.2966752,-3.7969458" class="cta-giant" target="_blank" style="background:var(--mk-primario);display:inline-flex;align-items:center;gap:0.75rem;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-          <circle cx="12" cy="10" r="3"></circle>
-        </svg>
-        Ver en Google Maps
-      </a>
-      <p style="margin-top:1.5rem;font-size:1rem;opacity:0.6;">
-        Consulta sin compromiso
-      </p>
+      <div class="mk-zdepth panel" style="--z:120px">
+        <h2>Visítanos</h2>
+        <a class="cta blue" href="https://www.google.com/maps/search/?api=1&query=40.2966752,-3.7969458" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Ver en Google Maps</a>
       </div>
     </div>
-    
+
   </div>
 </div>
-
 <footer>
   <p><strong>Centro Veterinario La Serna</strong> — Clínica Veterinaria en Leganés</p>
-  <p>Madrid</p>
-  <p style="margin-top:2rem;font-size:0.75rem;">Demo orientativa preparada por Disflim con información pública disponible.</p>
+  <p>Demo orientativa preparada por Disflim con información pública disponible.</p>
 </footer>
-
 <script src="motion.js"></script>
 </body>
 </html>
