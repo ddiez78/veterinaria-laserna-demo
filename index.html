@@ -18,13 +18,14 @@
   --blanco:#fff;
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--mk-fondo);color:var(--mk-texto);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;overflow-x:hidden}
+html,body{margin:0;padding:0;background:var(--mk-fondo);color:var(--mk-texto);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
 header{position:fixed;top:0;left:0;right:0;z-index:9990;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(255,255,255,.95);border-bottom:1px solid rgba(47,128,237,.16);box-shadow:0 10px 30px rgba(17,50,74,.08);backdrop-filter:blur(10px)}
 header .logo{font-weight:850;font-size:clamp(15px,2vw,20px);letter-spacing:-.02em;color:var(--azul)}
 header .tel{background:var(--mk-primario);color:#fff;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:800;box-shadow:0 10px 24px rgba(47,128,237,.24)}
 
-/* Mantener el túnel del kit, pero controlar capas para que no se pisen visualmente */
-.mk-film{background:#eef6fb}
+/* Mantener el túnel del kit: un único lienzo sticky. La altura explícita evita que algunos navegadores ignoren calc(var(--mk-shots) * 120vh). */
+.mk-film{background:#eef6fb;height:1680vh!important;position:relative!important}
+.mk-film-stage{position:sticky!important;top:0!important;height:100vh!important;overflow:hidden!important}
 .mk-tunnel{background:#eef6fb;perspective-origin:50% 46%}
 .mk-zshot{padding:88px 24px 52px;text-align:center;color:var(--mk-texto);isolation:isolate;z-index:calc(100 - var(--zi));}
 .mk-zshot>*{position:relative;z-index:2}
@@ -142,5 +143,35 @@ footer{background:#fff;color:#52677b;text-align:center;padding:44px 24px;border-
   <p>Demo orientativa preparada por Disflim con información pública disponible.</p>
 </footer>
 <script src="motion.js"></script>
+<script>
+/* Compatibilidad para demos públicas: mantiene el patrón del kit sin secuestrar el scroll.
+   Asegura altura, sticky y progreso --mk-p aunque el navegador no aplique bien calc() o rAF inicial. */
+(function(){
+  var film=document.querySelector('.mk-film[data-mk-scrolly]');
+  if(!film || !film.classList.contains('mk-film')) return;
+  var shots=[].slice.call(film.querySelectorAll('.mk-zshot'));
+  var n=shots.length || parseFloat(film.dataset.mkShots) || 14;
+  film.style.setProperty('--mk-shots', n);
+  film.style.setProperty('--mk-nshots', n);
+  film.style.height=(n*120)+'vh';
+  var stage=film.querySelector('.mk-film-stage');
+  if(stage){ stage.style.position='sticky'; stage.style.top='0'; stage.style.height='100vh'; stage.style.overflow='hidden'; }
+  function update(){
+    var total=Math.max(1, film.offsetHeight - window.innerHeight);
+    var p=Math.max(0, Math.min(1, (window.scrollY - film.offsetTop) / total));
+    film.style.setProperty('--mk-p', p.toFixed(4));
+    shots.forEach(function(shot){
+      var zi=parseFloat(shot.style.getPropertyValue('--zi')) || 0;
+      var f=p*(n-1)-zi;
+      if(f>-0.7 && f<0.42) shot.setAttribute('data-live',''); else shot.removeAttribute('data-live');
+    });
+  }
+  addEventListener('scroll', update, {passive:true});
+  addEventListener('resize', update, {passive:true});
+  addEventListener('load', update);
+  requestAnimationFrame(update);
+  setTimeout(update, 120);
+})();
+</script>
 </body>
 </html>
