@@ -34,7 +34,7 @@ a{color:inherit}
 .mk-film-stage.is-active{position:fixed;top:0;bottom:auto}
 .mk-film-stage.is-after .mk-zshot{opacity:0;pointer-events:none}
 
-.mk-zshot{--f:calc(var(--mk-p,0) * 13 - var(--zi,0));position:absolute;inset:0;display:grid;place-items:center;padding:88px 24px 54px;text-align:center;transform:translateZ(calc(var(--f) * 760px));opacity:min(clamp(0,calc((var(--f) + 1.55) / .75),1),clamp(0,calc((.38 - var(--f)) / .26),1));pointer-events:none;will-change:transform,opacity;isolation:isolate}
+.mk-zshot{--f:calc(var(--mk-p,0) * 13 - var(--zi,0));position:absolute;inset:0;display:grid;place-items:center;padding:88px 24px 54px;text-align:center;transform:translateZ(calc(var(--f) * 760px));opacity:var(--shot-opacity,0);pointer-events:none;will-change:transform,opacity;isolation:isolate;transition:opacity .18s ease-out}
 .mk-zshot[data-live]{pointer-events:auto}
 .mk-zdepth{transform:translateZ(var(--z,0px));will-change:transform}
 
@@ -151,7 +151,16 @@ p{margin:0 auto;max-width:720px;color:#40596f;font-size:clamp(17px,2.05vw,24px);
     shots.forEach(function(shot){
       var zi=parseFloat(shot.style.getPropertyValue('--zi')) || 0;
       var f=p*(n-1)-zi;
-      if(f>-0.72 && f<0.40) shot.setAttribute('data-live','');
+      var opacity;
+      if(p < 0.075){
+        opacity = zi === 0 ? 1 : 0;
+      } else {
+        var fadeIn=Math.max(0,Math.min(1,(f + 0.72) / 0.35));
+        var fadeOut=Math.max(0,Math.min(1,(0.40 - f) / 0.24));
+        opacity=Math.min(fadeIn,fadeOut);
+      }
+      shot.style.setProperty('--shot-opacity', opacity.toFixed(3));
+      if(opacity > 0.42) shot.setAttribute('data-live','');
       else shot.removeAttribute('data-live');
     });
   }
