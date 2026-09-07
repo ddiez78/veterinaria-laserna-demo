@@ -1,0 +1,22 @@
+{
+  "confirmed_data": {
+    "nombre": "Centro Veterinario La Serna",
+    "nicho": "Clínica veterinaria",
+    "ciudad": "Leganés",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=40.2966752,-3.7969458",
+    "provincia": "Madrid"
+  },
+  "data_not_found": {
+    "direccion": "[pending confirmation]",
+    "telefono": "[pending confirmation]",
+    "email": "[pending confirmation]",
+    "horario": "[pending confirmation]",
+    "servicios_especificos": "[pending confirmation]"
+  },
+  "colores_sugeridos": {
+    "primario": "#4A90E2",
+    "secundario": "#7CB342",
+    "fondo": "#ffffff",
+    "texto": "#2C3E50"
+  }
+}

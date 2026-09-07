@@ -1,0 +1,9 @@
+{
+  "lead_record_id": "recSuPNFBMRcnTdA9",
+  "negocio": "Centro Veterinario La Serna",
+  "nicho": "Clínica veterinaria",
+  "ciudad": "Leganés",
+  "created_at": "2026-09-07T11:50:00Z",
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic"
+}
