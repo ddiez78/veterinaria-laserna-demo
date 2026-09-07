@@ -8,31 +8,41 @@
 <link rel="stylesheet" href="motion.css">
 <style>
 :root {
-  --mk-primario: #4A90E2;
-  --mk-secundario: #7CB342;
-  --mk-fondo: #F8F9FA;
-  --mk-texto: #2C3E50;
+  --mk-primario: #2f80ed;
+  --mk-secundario: #5aa469;
+  --mk-fondo: #f4f8fb;
+  --mk-texto: #15293b;
+  --mk-azul-oscuro: #12324a;
 }
 
 body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; color: var(--mk-texto); background: var(--mk-fondo); }
 
-header { position: fixed; top: 0; left: 0; right: 0; z-index: 9990; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.98); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(74,144,226,0.2); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-header .logo { font-weight: 700; font-size: 1.35rem; color: var(--mk-primario); }
-header .tel { background: var(--mk-primario); color: white; padding: 0.6rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: transform 0.2s ease; }
-header .tel:hover { transform: scale(1.05); }
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 9990; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.98); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(47,128,237,0.18); box-shadow: 0 8px 28px rgba(21,41,59,0.08); }
+header .logo { font-weight: 800; font-size: 1.28rem; color: var(--mk-azul-oscuro); letter-spacing:-0.02em; }
+header .tel { background: var(--mk-primario); color: white; padding: 0.7rem 1.45rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: transform 0.2s ease; box-shadow:0 8px 22px rgba(47,128,237,0.22); }
+header .tel:hover { transform: scale(1.04); }
 
-.mk-film { background: linear-gradient(180deg, #F8F9FA 0%, #E8EEF5 100%); }
-.mk-zshot { color: var(--mk-texto); text-align: center; padding: 2rem; }
-.mk-zshot h1 { font-size: clamp(3rem, 9vw, 7rem); font-weight: 800; margin: 0 0 1rem 0; letter-spacing: -0.03em; line-height: 0.95; color: var(--mk-primario); }
-.mk-zshot h2 { font-size: clamp(2rem, 6vw, 4.5rem); font-weight: 700; margin: 0 0 1.5rem 0; letter-spacing: -0.02em; line-height: 1; }
-.mk-zshot h3 { font-size: clamp(1.5rem, 4vw, 3rem); font-weight: 600; margin: 0 0 1rem 0; color: var(--mk-primario); }
-.mk-zshot p { font-size: clamp(1.125rem, 2.5vw, 1.5rem); line-height: 1.5; max-width: 800px; margin: 0 auto 1.5rem; opacity: 0.9; }
-.mk-zshot .tagline { font-size: clamp(1.25rem, 3vw, 1.875rem); opacity: 0.75; font-weight: 300; }
+.mk-film { background: linear-gradient(180deg, #f4f8fb 0%, #e7f0f7 50%, #f9fbfd 100%); }
+.mk-zshot { color: var(--mk-texto); text-align: center; padding: 6rem 2rem 4rem; overflow:hidden; }
+.mk-zshot::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg, rgba(244,248,251,0.2), rgba(244,248,251,0.78)); z-index:1; }
+.mk-zshot > * { position:relative; z-index:2; }
+.mk-zshot h1 { font-size: clamp(2.7rem, 7.5vw, 6.1rem); font-weight: 850; margin: 0 auto 1.4rem; letter-spacing: -0.045em; line-height: 0.98; color: var(--mk-azul-oscuro); max-width: 980px; }
+.mk-zshot h2 { font-size: clamp(2.15rem, 5.4vw, 4.75rem); font-weight: 830; margin: 0 auto 1.7rem; letter-spacing: -0.04em; line-height: 1.04; max-width: 1040px; color: var(--mk-azul-oscuro); }
+.mk-zshot h3 { font-size: clamp(1.9rem, 4.2vw, 3.8rem); font-weight: 800; margin: 0 auto 1.35rem; color: var(--mk-azul-oscuro); line-height:1.05; letter-spacing:-0.035em; max-width:850px; }
+.mk-zshot p { font-size: clamp(1.08rem, 2.1vw, 1.55rem); line-height: 1.62; max-width: 760px; margin: 0 auto 1.5rem; opacity: 0.92; }
+.mk-zshot .tagline { font-size: clamp(1.2rem, 2.4vw, 1.75rem); opacity: 0.82; font-weight: 400; }
 
-.servicio-item { background: rgba(255,255,255,0.95); backdrop-filter: blur(4px); padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(74,144,226,0.2); max-width: 420px; margin: 0 auto; text-align: left; box-shadow: 0 4px 20px rgba(74,144,226,0.08); }
-.servicio-item .numero { font-size: 5rem; font-weight: 900; line-height: 1; color: var(--mk-primario); opacity: 0.15; margin: 0 0 0.5rem 0; letter-spacing: -0.05em; }
-.servicio-item h4 { font-size: 1.75rem; margin: 0 0 0.75rem 0; font-weight: 700; color: var(--mk-primario); letter-spacing: -0.01em; }
-.servicio-item p { font-size: 1.125rem; margin: 0; opacity: 0.85; line-height: 1.5; }
+.text-panel { background: rgba(255,255,255,0.94); border:1px solid rgba(47,128,237,0.14); border-radius: 26px; box-shadow:0 24px 70px rgba(18,50,74,0.14); padding: clamp(2rem,4vw,4rem); max-width: 920px; margin:0 auto; }
+.text-panel.dark { background: rgba(18,50,74,0.88); color:#fff; border-color:rgba(255,255,255,0.2); box-shadow:0 26px 80px rgba(18,50,74,0.28); }
+.text-panel.dark h3, .text-panel.dark p { color:#fff; }
+.bg-photo { position:absolute; inset:0; overflow:hidden; z-index:0; }
+.bg-photo img { width:100%; height:100%; object-fit:cover; filter:saturate(0.95) contrast(0.98); }
+.bg-photo::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(244,248,251,0.92), rgba(244,248,251,0.68), rgba(244,248,251,0.9)); }
+
+.servicio-item { background: rgba(255,255,255,0.98); backdrop-filter: blur(6px); padding: clamp(2rem,4vw,3.2rem); border-radius: 24px; border: 1px solid rgba(47,128,237,0.18); max-width: 540px; margin: 0 auto; text-align: left; box-shadow: 0 26px 70px rgba(21,41,59,0.16); }
+.servicio-item .numero { font-size: clamp(4.2rem,10vw,7.2rem); font-weight: 950; line-height: 0.82; color: var(--mk-primario); opacity: 0.14; margin: 0 0 1.1rem 0; letter-spacing: -0.07em; }
+.servicio-item h4 { font-size: clamp(1.65rem,3vw,2.35rem); margin: 0 0 1rem 0; font-weight: 820; color: var(--mk-azul-oscuro); letter-spacing: -0.035em; line-height:1.08; }
+.servicio-item p { font-size: clamp(1rem,1.9vw,1.25rem); margin: 0; opacity: 0.84; line-height: 1.62; max-width: 42ch; }
 
 .contacto-block { max-width: 600px; margin: 0 auto; }
 .contacto-item { margin: 2rem 0; }
@@ -58,7 +68,7 @@ footer p { margin: 0.5rem 0; opacity: 0.7; font-size: 0.875rem; }
 <body>
 
 <header>
-  <div class="logo">🐾 La Serna</div>
+  <div class="logo">Centro Veterinario La Serna</div>
   <a href="https://wa.me/34678612969?text=Hola%2C%20necesito%20información%20sobre%20Centro%20Veterinario%20La%20Serna" class="tel">Contactar</a>
 </header>
 
@@ -78,11 +88,11 @@ footer p { margin: 0.5rem 0; opacity: 0.7; font-size: 0.875rem; }
     
     <!-- 2: Statement con imagen -->
     <div class="mk-zshot" style="--zi:2">
-      <div class="mk-zdepth mk-zfog" style="--z:-200px; position:absolute; inset:0; overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=1600&q=80" alt="" style="width:100%; height:100%; object-fit:cover; opacity:0.25;">
+      <div class="mk-zdepth mk-zfog bg-photo" style="--z:-220px;">
+        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=1600&q=80" alt="">
       </div>
-      <div class="mk-zdepth" style="--z:100px; position:relative; z-index:10;">
-        <p style="font-size:clamp(1.5rem,4vw,2.5rem);font-weight:300;max-width:900px;">
+      <div class="mk-zdepth text-panel" style="--z:120px;">
+        <p style="font-size:clamp(1.45rem,3.5vw,2.35rem);font-weight:450;max-width:760px;">
           Profesionales con vocación.<br>
           Tu mascota merece el mejor cuidado.
         </p>
@@ -91,8 +101,8 @@ footer p { margin: 0.5rem 0; opacity: 0.7; font-size: 0.875rem; }
     
     <!-- 3-7: Servicios -->
     <div class="mk-zshot" style="--zi:3">
-      <div class="mk-zdepth mk-zfog" style="--z:-150px; position:absolute; inset:0; overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=1600&q=80" alt="" style="width:100%; height:100%; object-fit:cover; opacity:0.2;">
+      <div class="mk-zdepth mk-zfog bg-photo" style="--z:-180px;">
+        <img src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=1600&q=80" alt="">
       </div>
       <div class="mk-zdepth" style="--z:100px; position:relative; z-index:10;">
         <div class="servicio-item">
@@ -104,7 +114,7 @@ footer p { margin: 0.5rem 0; opacity: 0.7; font-size: 0.875rem; }
     </div>
     
     <div class="mk-zshot" style="--zi:4">
-      <div class="mk-zdepth" style="--z:50px">
+      <div class="mk-zdepth" style="--z:90px">
         <div class="servicio-item">
           <div class="numero">02</div>
           <h4>Vacunación y Desparasitación</h4>
@@ -114,8 +124,8 @@ footer p { margin: 0.5rem 0; opacity: 0.7; font-size: 0.875rem; }
     </div>
     
     <div class="mk-zshot" style="--zi:5">
-      <div class="mk-zdepth mk-zfog" style="--z:-150px; position:absolute; inset:0; overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1615751072497-5f5169febe17?w=1600&q=80" alt="" style="width:100%; height:100%; object-fit:cover; opacity:0.2;">
+      <div class="mk-zdepth mk-zfog bg-photo" style="--z:-180px;">
+        <img src="https://images.unsplash.com/photo-1615751072497-5f5169febe17?w=1600&q=80" alt="">
       </div>
       <div class="mk-zdepth" style="--z:100px; position:relative; z-index:10;">
         <div class="servicio-item">
@@ -127,7 +137,7 @@ footer p { margin: 0.5rem 0; opacity: 0.7; font-size: 0.875rem; }
     </div>
     
     <div class="mk-zshot" style="--zi:6">
-      <div class="mk-zdepth" style="--z:50px">
+      <div class="mk-zdepth" style="--z:90px">
         <div class="servicio-item">
           <div class="numero">04</div>
           <h4>Urgencias</h4>
@@ -137,7 +147,7 @@ footer p { margin: 0.5rem 0; opacity: 0.7; font-size: 0.875rem; }
     </div>
     
     <div class="mk-zshot" style="--zi:7">
-      <div class="mk-zdepth" style="--z:50px">
+      <div class="mk-zdepth" style="--z:90px">
         <div class="servicio-item">
           <div class="numero">05</div>
           <h4>Peluquería Canina</h4>
@@ -148,35 +158,39 @@ footer p { margin: 0.5rem 0; opacity: 0.7; font-size: 0.875rem; }
     
     <!-- 8: Promesa -->
     <div class="mk-zshot" style="--zi:8">
-      <div class="mk-zdepth mk-zfog" style="--z:-180px; position:absolute; inset:0; overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1600&q=80" alt="" style="width:100%; height:100%; object-fit:cover; opacity:0.2;">
+      <div class="mk-zdepth mk-zfog bg-photo" style="--z:-210px;">
+        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1600&q=80" alt="">
       </div>
-      <div class="mk-zdepth" style="--z:100px; position:relative; z-index:10;">
+      <div class="mk-zdepth text-panel" style="--z:120px;">
         <h3>Experiencia y<br>vocación</h3>
         <p style="max-width:700px;">
-          Años cuidando mascotas en Leganés. Profesionales que aman lo que hacen.
+          Cuidado profesional, trato cercano y comunicación clara desde la primera visita.
         </p>
       </div>
     </div>
     
     <!-- 9: Statement -->
     <div class="mk-zshot" style="--zi:9">
-      <p style="font-size:clamp(1.375rem,3.5vw,2.25rem);font-weight:300;">
-        Desde la primera consulta hasta el seguimiento,<br>
-        estarás informado de cada paso.
-      </p>
+      <div class="text-panel">
+        <p style="font-size:clamp(1.35rem,3vw,2.1rem);font-weight:450;">
+          Desde la primera consulta hasta el seguimiento,<br>
+          estarás informado de cada paso.
+        </p>
+      </div>
     </div>
     
     <!-- 10: Ubicación -->
     <div class="mk-zshot" style="--zi:10">
-      <h3>Leganés, Madrid</h3>
-      <p>Tu clínica veterinaria de confianza</p>
-      <p style="font-size:1.125rem;opacity:0.75;">Cerca de ti cuando más lo necesitas</p>
+      <div class="text-panel">
+        <h3>Leganés, Madrid</h3>
+        <p>Tu clínica veterinaria de confianza</p>
+        <p style="font-size:1.125rem;opacity:0.75;">Cerca de ti cuando más lo necesitas</p>
+      </div>
     </div>
     
-    <!-- 11: Horario placeholder -->
+    <!-- 11: Disponibilidad -->
     <div class="mk-zshot" style="--zi:11">
-      <div class="contacto-block">
+      <div class="contacto-block text-panel">
         <div class="contacto-item">
           <div class="contacto-label">Visítanos</div>
           <div class="contacto-value" style="font-size:1.5rem;">
@@ -188,6 +202,7 @@ footer p { margin: 0.5rem 0; opacity: 0.7; font-size: 0.875rem; }
     
     <!-- 12: CTA WhatsApp -->
     <div class="mk-zshot" style="--zi:12">
+      <div class="text-panel">
       <h3>¿Necesitas una cita?</h3>
       <a href="https://wa.me/34678612969?text=Hola%2C%20necesito%20información%20sobre%20Centro%20Veterinario%20La%20Serna" class="cta-giant mk-pulse" target="_blank" style="display:inline-flex;align-items:center;gap:0.75rem;">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
@@ -198,10 +213,12 @@ footer p { margin: 0.5rem 0; opacity: 0.7; font-size: 0.875rem; }
       <p style="margin-top:1.5rem;font-size:1.125rem;opacity:0.75;">
         Te responderemos lo antes posible
       </p>
+      </div>
     </div>
     
     <!-- 13: CTA Maps -->
     <div class="mk-zshot" style="--zi:13">
+      <div class="text-panel">
       <h3>Visítanos</h3>
       <a href="https://www.google.com/maps/search/?api=1&query=40.2966752,-3.7969458" class="cta-giant" target="_blank" style="background:var(--mk-primario);display:inline-flex;align-items:center;gap:0.75rem;">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -213,6 +230,7 @@ footer p { margin: 0.5rem 0; opacity: 0.7; font-size: 0.875rem; }
       <p style="margin-top:1.5rem;font-size:1rem;opacity:0.6;">
         Consulta sin compromiso
       </p>
+      </div>
     </div>
     
   </div>
