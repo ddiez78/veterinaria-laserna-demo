@@ -70,7 +70,7 @@ p{margin:0 auto;max-width:720px;color:#40596f;font-size:clamp(17px,2.05vw,24px);
 
 <main class="mk-film" data-mk-scrolly data-mk-shots="14" style="--mk-nshots:14;--mk-p:0">
   <div class="mk-film-stage mk-tunnel is-before">
-    <article class="mk-zshot clean-hero" style="--zi:0" data-live>
+    <article class="mk-zshot clean-hero" style="--zi:0;--shot-opacity:1" data-live>
       <div class="hero-card">
         <h1>Centro Veterinario<br>La Serna</h1>
         <div class="scroll-note"><i></i><span>Desliza para ver la propuesta</span></div>
@@ -129,6 +129,8 @@ p{margin:0 auto;max-width:720px;color:#40596f;font-size:clamp(17px,2.05vw,24px);
 </footer>
 
 <script>
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.addEventListener('pageshow', function(){ if (window.scrollY < 2600) window.scrollTo(0,0); });
 (function(){
   var film=document.querySelector('.mk-film');
   var stage=document.querySelector('.mk-film-stage');
@@ -152,7 +154,7 @@ p{margin:0 auto;max-width:720px;color:#40596f;font-size:clamp(17px,2.05vw,24px);
       var zi=parseFloat(shot.style.getPropertyValue('--zi')) || 0;
       var f=p*(n-1)-zi;
       var opacity;
-      if(p < 0.075){
+      if(p < 0.165){
         opacity = zi === 0 ? 1 : 0;
       } else {
         var fadeIn=Math.max(0,Math.min(1,(f + 0.72) / 0.35));
