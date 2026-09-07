@@ -35,10 +35,10 @@ header .tel:hover { transform: scale(1.04); }
 .text-panel { background: rgba(255,255,255,0.94); border:1px solid rgba(47,128,237,0.14); border-radius: 26px; box-shadow:0 24px 70px rgba(18,50,74,0.14); padding: clamp(2rem,4vw,4rem); max-width: 920px; margin:0 auto; }
 .text-panel.dark { background: rgba(18,50,74,0.88); color:#fff; border-color:rgba(255,255,255,0.2); box-shadow:0 26px 80px rgba(18,50,74,0.28); }
 .text-panel.dark h1, .text-panel.dark h2, .text-panel.dark h3, .text-panel.dark p { color:#fff; }
-.hero-panel { background: rgba(18,50,74,0.84); border: 1px solid rgba(255,255,255,0.22); border-radius: 30px; padding: clamp(2rem,5vw,4.5rem); max-width: 980px; margin: 0 auto; box-shadow: 0 34px 90px rgba(18,50,74,0.38); backdrop-filter: blur(8px); }
-.hero-panel .eyebrow { color:#bfe0ff; font-size: clamp(0.78rem,1.4vw,0.95rem); line-height:1.4; text-transform:uppercase; letter-spacing:0.18em; font-weight:800; margin:0 0 1.2rem; }
-.hero-panel h1 { color:#fff; font-size: clamp(2rem,5.4vw,4.6rem); line-height: 1.02; letter-spacing:-0.052em; margin:0 0 1.4rem; }
-.hero-panel p { color:#e9f4ff; max-width: 640px; font-size: clamp(1.02rem,1.85vw,1.32rem); line-height:1.65; }
+.hero-panel { background: rgba(18,50,74,0.96); border: 1px solid rgba(255,255,255,0.24); border-radius: 28px; padding: clamp(2rem,5vw,4rem); max-width: 860px; margin: 0 auto; box-shadow: 0 34px 90px rgba(18,50,74,0.42); backdrop-filter: blur(10px); }
+.hero-panel h1 { color:#fff; font-size: clamp(2.15rem,5.2vw,4.3rem); line-height: 1.04; letter-spacing:-0.045em; margin:0; }
+.scroll-hint { margin: 1.35rem auto 0; display:inline-flex; align-items:center; gap:.55rem; color:#d7ebff; font-size: clamp(.82rem,1.5vw,.98rem); letter-spacing:.12em; text-transform:uppercase; font-weight:800; opacity:.82; }
+.scroll-hint .dot { width:8px; height:8px; border-radius:999px; background:#5aa469; box-shadow:0 0 0 7px rgba(90,164,105,.16); }
 .bg-photo { position:absolute; inset:0; overflow:hidden; z-index:0; }
 .bg-photo img { width:100%; height:100%; object-fit:cover; filter:saturate(0.95) contrast(0.98); }
 .bg-photo::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(244,248,251,0.92), rgba(244,248,251,0.68), rgba(244,248,251,0.9)); }
@@ -85,9 +85,8 @@ footer p { margin: 0.5rem 0; opacity: 0.7; font-size: 0.875rem; }
         <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1800&q=85" alt="">
       </div>
       <div class="mk-zdepth hero-panel" style="--z:130px;">
-        <p class="eyebrow">Clínica veterinaria en Leganés</p>
-        <h1 class="mk-split">Centro Veterinario<br>La Serna</h1>
-        <p>Cuidado profesional, cercano y claro para quienes quieren lo mejor para su mascota.</p>
+        <h1>Centro Veterinario<br>La Serna</h1>
+        <div class="scroll-hint"><span class="dot"></span><span>Desliza para ver la propuesta</span></div>
       </div>
     </div>
     
