@@ -27,7 +27,7 @@ a{color:inherit}
 .topbar__cta{flex:0 0 auto;text-decoration:none;color:#fff;background:var(--mk-primario);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:850;box-shadow:0 12px 28px rgba(47,128,237,.22)}
 
 /* Versión robusta: el contenedor da recorrido y el escenario queda fixed mientras dura la película. No hay scroll hijacking: el usuario sigue usando scroll nativo. */
-.mk-film{position:relative;height:1680vh;background:var(--mk-fondo)}
+.mk-film{position:relative;height:2180vh;background:var(--mk-fondo)}
 .mk-film-stage{position:fixed;inset:0;width:100vw;height:100vh;overflow:hidden;display:grid;place-items:center;background:var(--mk-fondo);z-index:1;perspective:1100px;perspective-origin:50% 46%;contain:layout paint style}
 .mk-film-stage.is-before{position:absolute;top:0;bottom:auto}
 .mk-film-stage.is-after{position:absolute;top:auto;bottom:0}
@@ -155,19 +155,23 @@ window.addEventListener('pageshow', function(){ if (window.scrollY < 2600) windo
     if(raw < 0){ setStage('is-before'); }
     else if(raw > 1){ setStage('is-after'); }
     else{ setStage('is-active'); }
+    var intro=0.050; // about one first scroll on the taller film
     shots.forEach(function(shot){
       var zi=parseFloat(shot.style.getPropertyValue('--zi')) || 0;
-      var f=p*(n-1)-zi;
-      var opacity;
-      if(p < 0.088){
-        opacity = zi === 0 ? 1 : 0;
+      var f, opacity;
+      if(zi === 0){
+        opacity = p < intro ? 1 : Math.max(0, Math.min(1, (intro + 0.018 - p) / 0.018));
+      } else if(p < intro * 0.92){
+        opacity = 0;
       } else {
-        var fadeIn=Math.max(0,Math.min(1,(f + 0.72) / 0.35));
-        var fadeOut=Math.max(0,Math.min(1,(0.40 - f) / 0.24));
+        var q=Math.max(0, Math.min(1, (p - intro) / (1 - intro)));
+        f=q*(n-2)-(zi-1);
+        var fadeIn=Math.max(0,Math.min(1,(f + 0.95) / 0.48));
+        var fadeOut=Math.max(0,Math.min(1,(0.72 - f) / 0.48));
         opacity=Math.min(fadeIn,fadeOut);
       }
       shot.style.setProperty('--shot-opacity', opacity.toFixed(3));
-      if(opacity > 0.42) shot.setAttribute('data-live','');
+      if(opacity > 0.36) shot.setAttribute('data-live','');
       else shot.removeAttribute('data-live');
     });
   }
